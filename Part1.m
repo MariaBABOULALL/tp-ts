@@ -18,9 +18,17 @@ for n=1:N
     x0(n) = K;
     x1(n) = cos(2*pi*fq*t);
     x2(n) = sin(2*pi*fq*t);
-    x3(n) = t - dt; % DIRAC ?
+    if n == floor((dt-a)/Te +1)
+        x3(n) = 1;
+    else
+        x3(n) = 0;
+    end
     x4(n) = exp(1i*2*pi*fq*t);
-    % x5(n) = ???
+    if t >= 0 && t <= 4
+        x5(n) = 1;
+    else
+        x5(n) = 0;
+    end
     x6(n) = exp(-pi*t*t);
 end
 
@@ -41,5 +49,5 @@ multiplot('x1', x1, N, a, b)
 multiplot('x2', x2, N, a, b)
 multiplot('x3', x3, N, a, b)
 multiplot('x4', x4, N, a, b)
-% multiplot('x5', x5, N, a, b)
+multiplot('x5', x5, N, a, b)
 multiplot('x6', x6, N, a, b)
