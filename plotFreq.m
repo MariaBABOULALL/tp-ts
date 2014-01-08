@@ -9,7 +9,6 @@ x = -fe/2:df:(fe/2 -df);
 X = 1:N;
 y = F(X);
 
-figure(1)
 plot(x,y)
 
 end

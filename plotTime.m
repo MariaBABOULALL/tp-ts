@@ -7,7 +7,6 @@ x = a:Te:(b - Te);
 X = 1:N;
 y = f(X);
 
-figure(1)
 plot(x,y)
 
 end

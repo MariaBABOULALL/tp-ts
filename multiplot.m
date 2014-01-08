@@ -1,17 +1,22 @@
 function [ ] = multiplot( name, x, N, a, b )
-
-name
-
 X = tfour(x);
 
-'  temporel'
+figure(1)
 plotTime(x, N, a, b)
-pause
-'  spectre reel'
+title(name)
+
+figure(2)
+plotTime(tfourinv(X), N, a, b)
+title('après passage fourrier et fourrier inverse')
+
+figure(3)
 plotFreq(real(X), N, a, b)
-pause
-'  spectre imaginaire'
+title('spectre reel')
+
+figure(4)
 plotFreq(imag(X), N, a, b)
+title('spectre imaginaire')
+
 pause
 
 end
