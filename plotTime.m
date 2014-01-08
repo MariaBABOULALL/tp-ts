@@ -1,10 +1,14 @@
-function [ ] = plotTime( f, a, b )
+function [ ] = plotTime( f, N, a, b )
 %PLOTTIME Plot a function on time
 
-x = a:b;
-y = f(x);
+[ Te, ~ ] = echToFq(N, a, b);
 
-plot(x,y);
+x = a:Te:(b - Te);
+X = 1:N;
+y = f(X);
+
+figure(1)
+plot(x,y)
 
 end
 

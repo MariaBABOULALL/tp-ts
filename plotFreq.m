@@ -1,10 +1,16 @@
-function [ ] = plotFreq( F, fe )
+function [ ] = plotFreq( F, N, a, b )
 %PLOTFREQ Plot function on frequencies
 
-x = -fe/2:fe/2;
-y = F(x);
+[ ~, fe ] = echToFq(N, a, b);
 
-plot(x,y);
+df = fe/N;
+
+x = -fe/2:df:(fe/2 -df);
+X = 1:N;
+y = F(X);
+
+figure(1)
+plot(x,y)
 
 end
 

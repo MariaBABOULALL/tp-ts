@@ -7,19 +7,24 @@ b = 50;
 % Paramètres fonctions
 K = 1;
 fq = 2;
+dt = 3;
 
 % Fonctions
-xa0(t) = K;
-xa1(t) = cos(2*pi*fq*t);
-xa2(t) = sin(2*pi*fq*t);
-% x3(t) = dirac(t-dt); % à echantillonner à la main
-xa4(t) = exp(1i*2*pi*fq*t);
-% xa5(t) = ???
-xa6(t) = exp(-pi*t*t);
+[ Te, fe ] = echToFq(N, a, b);
+
+for n=1:N
+    % Discretisation
+    t = (n - 1) * Te + a;
+    x0(n) = K;
+    x1(n) = cos(2*pi*fq*t);
+    x2(n) = sin(2*pi*fq*t);
+    x3(n) = t - dt; % DIRAC ?
+    x4(n) = exp(1i*2*pi*fq*t);
+    % x5(n) = ???
+    x6(n) = exp(-pi*t*t);
+end
 
 %% Frequence
-
-[ Te, fe ] = echToFq(N, a, b);
 
 'Quelle est la période d échantillonage ?'
 Te
@@ -27,7 +32,14 @@ Te
 'Quelle est la fréquence d échantillonnage ?'
 fe
 
-%% Echantillonage
+%% Transformées
 
 'Affichez ces fonctions ainsi que leurs spectres'
 
+multiplot('x0', x0, N, a, b)
+multiplot('x1', x1, N, a, b)
+multiplot('x2', x2, N, a, b)
+multiplot('x3', x3, N, a, b)
+multiplot('x4', x4, N, a, b)
+% multiplot('x5', x5, N, a, b)
+multiplot('x6', x6, N, a, b)
