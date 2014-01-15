@@ -60,9 +60,22 @@ end
 % pause
 
 %% Restauration d'images par filtre de Wiener
+
+% Input
 [ im, ~ ] = imread('assets/imageFloue.png');
 D = imageShow(im);
 
-I = wiener(D, H, PB, PI);
+% Filter
+H = correctionH(512, 512, 3, 18);
 
+% Noise
+[ imref, ~ ] = imread('assets/imageRef.png');
+[ PB, PI ] = noiseGetter( imref, H );
+
+% Simple - Doesn't work => Noise !
+% I = D./H;
+% imageShow(ifft2(fftshift(I)));
+
+% Wiener
+I = wiener(D, H, PB, PI);
 imageShow(ifft2(fftshift(I)));
