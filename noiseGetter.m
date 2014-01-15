@@ -6,24 +6,13 @@ PI = fftshift(PI);
 
 DR = PI.*H;
 
-dr = ifft2(fftshift(DR));
+dr = double(ifft2(fftshift(DR)));
 
-sz = size(dr);
-xMax = sz(1);
-yMax = sz(2);
+dq = floor(dr);
 
-dq = zeros(sz);
+pb = dr - dq;
 
-for x=1:xMax
-    for y=1:yMax
-        dq(x, y) = floor(dr(x, y));
-    end
-end
-
-DQ = fft2(dq);
-DQ = fftshift(DQ);
-
-PB = DQ - DR;
-
+PB = fft2(pb);
+PB = fftshift(PB);
 end
 

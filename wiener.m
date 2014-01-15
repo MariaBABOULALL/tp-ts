@@ -5,14 +5,8 @@ sz = size(H);
 uMax = sz(1);
 vMax = sz(2);
 
-W = zeros(uMax, vMax);
-
-for u=1:uMax
-    for v=1:vMax
-        W(u, v) = abs(H(u,v)*H(u,v))/(H(u,v)*(abs(H(u,v)*H(u,v))+PB(u,v)/PI(u,v)));
-    end
-end
-
+W = (1./H).*(abs(H).*abs(H))./((abs(H).*abs(H))+(abs(PB).*abs(PB))./(abs(PI).*abs(PI)));
+ 
 I = D.*W;
 
 end

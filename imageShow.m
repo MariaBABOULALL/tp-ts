@@ -5,7 +5,7 @@ function [ IM ] = imageShow( im )
 grayScale = ([0:255]/255)'*[1 1 1];
 
 figure(1)
-image(im)
+image(real(im))
 colormap(grayScale)
 
 im = double(im);

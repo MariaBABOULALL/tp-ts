@@ -66,7 +66,7 @@ end
 D = imageShow(im);
 
 % Filter
-H = correctionH(512, 512, 3, 18);
+H = correctionH(19);
 
 % Noise
 [ imref, ~ ] = imread('assets/imageRef.png');
