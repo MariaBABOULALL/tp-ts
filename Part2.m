@@ -78,4 +78,6 @@ H = correctionH(19);
 
 % Wiener
 I = wiener(D, H, PB, PI);
-imageShow(ifft2(fftshift(I)));
+figure(1)
+image(real(ifft2(fftshift(I))))
+% imageShow(ifft2(I));

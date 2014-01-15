@@ -5,10 +5,9 @@ function [ IM ] = imageShow( im )
 grayScale = ([0:255]/255)'*[1 1 1];
 
 figure(1)
-image(real(im))
+image(im)
 colormap(grayScale)
 
-im = double(im);
 IM = fft2(im);
 IM = fftshift(IM);
 
